@@ -1,0 +1,4 @@
+graphql:
+  packages: "account.ncsoft.bo"
+  federation:
+    enabled: true
