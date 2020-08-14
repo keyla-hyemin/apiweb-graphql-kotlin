@@ -1,0 +1,106 @@
+aframework:
+  plaync:
+    security:
+      enabled: true
+  npclient:
+    client:
+      mode: reactive
+    connections:
+      plaync-webgate:
+        gate: WEBGATE
+        app-id: 206a130f-bf96-667a-4e4b-fe1a62583117
+        secret: kguKYYPqXfL5MVdjzgb/iw==
+        base-uri: http://op-np-01.korea.ncsoft.corp:6601
+      plaync-appgate:
+        gate: APPGATE
+        app-id: 206A130F-BF96-667A-4E4B-FE1A62583117
+        secret: kguKYYPqXfL5MVdjzgb/iw==
+        base-uri: http://op-np-01.korea.ncsoft.corp:6602
+  web:
+    error:
+      redirect:
+        enabled: false
+  service:
+    name: account-web
+---
+spring:
+  profiles: op,opdev
+aframework:
+  plaync:
+    security:
+      authentication-entry-point:
+        login-url: https://op-mlogin.plaync.com/login/signin
+  npclient:
+    connections:
+      plaync-webgate:
+        gate: WEBGATE
+        app-id: 206a130f-bf96-667a-4e4b-fe1a62583117
+        secret: kguKYYPqXfL5MVdjzgb/iw==
+        base-uri: http://op-np-01.korea.ncsoft.corp:6601
+      plaync-appgate:
+        gate: APPGATE
+        app-id: 206A130F-BF96-667A-4E4B-FE1A62583117
+        secret: kguKYYPqXfL5MVdjzgb/iw==
+        base-uri: http://op-np-01.korea.ncsoft.corp:6602
+  web:
+    error:
+      redirect:
+        enabled: true
+        client-error: /error/1
+        server-error: /error/2
+---
+spring:
+  profiles: rc
+aframework:
+  web:
+    error:
+      redirect:
+        enabled: false
+        not-found: https://rc-www.plaync.com/error/404
+        client-error: /error/error
+        server-error: /error/error
+  plaync:
+    security:
+      authentication-entry-point:
+        login-url: https://rc-mlogin.plaync.com/login/signin
+        force-https: true
+  npclient:
+    connections:
+      plaync-webgate:
+        gate: WEBGATE
+        app-id: 206a130f-bf96-667a-4e4b-fe1a62583117
+        secret: kguKYYPqXfL5MVdjzgb/iw==
+        base-uri: http://10.71.2.201:6601
+      plaync-appgate:
+        gate: APPGATE
+        app-id: 206A130F-BF96-667A-4E4B-FE1A62583117
+        secret: kguKYYPqXfL5MVdjzgb/iw==
+        base-uri: http://10.71.2.209:6602
+---
+spring:
+  profiles: stage, live
+aframework:
+  web:
+    error:
+      redirect:
+        enabled: true
+        not-found: https://www.plaync.com/support/404
+        client-error: /error/error
+        server-error: /error/error
+  plaync:
+    security:
+      authentication-entry-point:
+        login-url: https://mlogin.plaync.com/login/signin
+        force-https: true
+  npclient:
+    connections:
+      plaync-webgate:
+        gate: WEBGATE
+        app-id: 206a130f-bf96-667a-4e4b-fe1a62583117
+        secret: kguKYYPqXfL5MVdjzgb/iw==
+        base-uri: http://10.71.2.56:6601
+      plaync-appgate:
+        gate: APPGATE
+        app-id: 206A130F-BF96-667A-4E4B-FE1A62583117
+        secret: kguKYYPqXfL5MVdjzgb/iw==
+        base-uri: http://10.71.2.21:6602

@@ -15,14 +15,14 @@ data class Customer(@ExternalDirective val customerKey: String, val userContacts
 //    fun accounts() = Account(userContacts.get(0).userId)2
 //    fun accounts() = UserQuery().AccountQuery(userContacts.get(0).userId)
 
-    fun accounts() : Mono<List<Account>> {
-        var accounts = Flux.empty<Account>()
-        for (userContact in userContacts) {
-            accounts = accounts.concatWith(UserQuery().AccountQuery(userContact.userId))
-        }
-
-        return accounts.collectList();
-    }
+//    fun accounts() : Mono<List<Account>> {
+//        var accounts = Flux.empty<Account>()
+//        for (userContact in userContacts) {
+//            accounts = accounts.concatWith(UserQuery().AccountQuery(userContact.userId))
+//        }
+//
+//        return accounts.collectList();
+//    }
 }
 
 //Customer{
